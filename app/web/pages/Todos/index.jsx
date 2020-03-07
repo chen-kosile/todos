@@ -31,49 +31,47 @@ function Todos(props) {
     }
 
     function changeStatusAll(checked) {
-        const changeAll = dataList.map(item => {
-            item.checked = checked; 
-            return item;
-        })
-        dispatchAction({
-            type: 'todos/save',
-            payload: {
-                dataList: changeAll,
-                selectAll: checked
-            }
-        })
         dispatchAction({
             type: 'todos/querySelectAll',
             payload: {
                 selectAll: checked
             }
+        }).then(res => {
+            if (res.code === 200) {
+                if (res.code === 200) {
+                    dispatchAction({
+                        type: 'todos/queryTodosList'
+                    })
+                } 
+            }
         })
     }
 
     function changeStatus(checked, index) {
-        let list = selectList;
-        list[index].checked = checked;
-        let newList = list.filter(item => {
-            if (selectType === 'all') {
-                return true;
-            } else if ( selectType === 'active') {
-                return !item.checked;
-            } else if (selectType === 'completed') {
-                return item.checked;
-            }
-            return false;
-        })
-        dispatchAction({
-            type: 'todos/save',
-            payload: {
-                selectList: newList
-            }
-        });
+        // let list = selectList;
+        // list[index].checked = checked;
+        // let newList = list.filter(item => {
+        //     if (selectType === 'all') {
+        //         return true;
+        //     } else if ( selectType === 'active') {
+        //         return !item.checked;
+        //     } else if (selectType === 'completed') {
+        //         return item.checked;
+        //     }
+        //     return false;
+        // })
+
         dispatchAction({
             type: 'todos/queryChangeSelect',
             payload: {
                 checked,
                 id: selectList[index].id
+            }
+        }).then(res => {
+            if (res.code === 200) {
+                dispatchAction({
+                    type: 'todos/queryTodosList'
+                })
             }
         })
     }
@@ -138,7 +136,6 @@ function Todos(props) {
                     <Lists
                         changeStatus={changeStatus}
                         removeItem={removeItem}
-                        selectAll={selectAll}
                         selectList={selectList}
                     />
                     <Footer

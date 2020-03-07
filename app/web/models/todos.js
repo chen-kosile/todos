@@ -12,7 +12,7 @@ export default {
 
     effects: {
         *queryTodosList({ payload = {}}, { call, put, select }) {
-            let response = yield call(fetch, {
+            const response = yield call(fetch, {
                 url: '/api/todos/list',
                 payload: {
                     data: {
@@ -20,12 +20,25 @@ export default {
                     }
                 }
             })
+            const todos = yield select((state) => state.todos);
+            const { selectType } = todos;
             if (response && response.code === 200) {
+                const { dataList } = response.data;
+                let selectList = dataList.filter(item => {
+                    if (selectType === 'all') {
+                        return true;
+                    } else if ( selectType === 'active') {
+                        return !item.checked;
+                    } else if (selectType === 'completed') {
+                        return item.checked;
+                    }
+                    return false;
+                })
                 yield put({
                     type: 'save',
                     payload: {
                         ...response.data,
-                        selectList: response.data.dataList
+                        selectList
                     }
                 })
             }

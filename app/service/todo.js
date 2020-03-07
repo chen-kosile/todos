@@ -21,7 +21,7 @@ class TodoService extends Service {
 
     async changeTodos(isSelected) {
         const { ctx, app } = this;
-        const changeTodos = await ctx.model.Todos.update({
+        const todos = await ctx.model.Todos.update({
             checked: isSelected
         }, {
             where: {
@@ -31,7 +31,7 @@ class TodoService extends Service {
             }
         })
 
-        return changeTodos;
+        return todos;
     }
 
     async changeSelect(obj) {

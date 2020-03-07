@@ -3,7 +3,7 @@ import { Checkbox, Icon } from 'antd';
 import styles from './index.less';
 
 function Lists(props) {
-    const { changeStatus, selectList, selectAll, removeItem } = props;
+    const { changeStatus, selectList, removeItem } = props;
 
     function changeCheckBox(ev, index) {
         const { checked } = ev.target;
@@ -16,7 +16,7 @@ function Lists(props) {
                 selectList.map((item, index) => (
                     <div className={styles.item} key={item.id}>
                         <Checkbox checked={item.checked} onChange={(ev) => changeCheckBox(ev, index)}/>
-                        <div className={`${styles.middle} ${!selectAll ? styles.itemValue : styles.select}`}>
+                        <div className={`${styles.middle} ${!item.checked ? styles.itemValue : styles.select}`}>
                             {item.value}
                         </div>
                         <div className={styles.removeItem} onClick={() => removeItem(index)}>

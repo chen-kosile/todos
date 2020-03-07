@@ -73,8 +73,6 @@ class TodoController extends Controller {
   async selectAll() {
     const { ctx } = this;
     const { selectAll } = ctx.request.body;
-    console.log('=====================')
-    console.log(typeof selectAll);
     let isSelect = selectAll === 'true' ? 1 : 0;
 
     await ctx.service.todo.changeTodos(isSelect);
@@ -88,7 +86,14 @@ class TodoController extends Controller {
     const { id, checked } = ctx.request.body;
 
     const todo = await ctx.service.todo.changeSelect({id, checked});
-    
+    const dataList = await ctx.service.todo.getList();
+    const data = await ctx.service.selectall.query();
+
+    if (dataList.some(item => item.checked === false) && data.selectAll === true) {
+      await ctx.service.selectall.changeSelect(0);
+    } else if (dataList.every(item => item.checked === true) && data.selectAll === false) {
+      await ctx.service.selectall.changeSelect(1);
+    }
     ctx.returnBody(200, '状态修改成功', {
       status: todo
     })
