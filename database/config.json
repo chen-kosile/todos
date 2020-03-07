@@ -1,0 +1,37 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "todos",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": 0,
+    "define": {
+      "charset": "utf8",
+      "dialectOptions": {
+        "collate": "utf8_unicode_ci"
+      }
+    },
+    "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "123456",
+    "database": "todos",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  },
+  "production": {
+    "username": "root",
+    "password": "123456",
+    "database": "todos",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  }
+}

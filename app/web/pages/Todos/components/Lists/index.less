@@ -1,0 +1,30 @@
+.lists {
+  // padding: 10px;
+  .item {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    height: 50px;
+    border-bottom: 1px solid rgb(218, 217, 217);
+    .itemValue, .select {
+      margin-left: 10px;
+    }
+    .middle {
+      width: 500px;
+      text-align: left;
+    }
+    &:hover {
+      .removeItem {
+        cursor: pointer;
+        visibility: visible;
+      }
+    }
+    .removeItem {
+      visibility: hidden;
+    }
+    .select {
+        color: gray;
+        text-decoration: line-through;
+    }
+  }
+}
