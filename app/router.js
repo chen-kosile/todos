@@ -6,7 +6,7 @@
 module.exports = app => {
   const { router, controller } = app;
   // 获取列表数据
-  router.post('/api/todos/list', controller.todo.index);
+  router.post('/api/todos/list', controller.todo.queryData);
 
   // 添加数据
   router.post('/api/todos/add', controller.todo.addItem);
@@ -19,7 +19,7 @@ module.exports = app => {
 
   // 改变单条数据状态
   router.post('/api/todos/changeSelect', controller.todo.changeStatus);
-
+  
   // 清除完成数据
   router.post('/api/todos/clearCompleted', controller.todo.clearCompleted);
 
