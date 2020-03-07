@@ -32,11 +32,12 @@ npx sequelize db:seed:all 插入必要数据
 
 ```sh
 $ npm run dev
-$ open http://localhost:7001/
+$ open http://localhost:7001/ or http:localhost:8000
 ```
 
 启动整个项目
 
 ```sh
 $ npm run start
+$ open http://localhost:7001
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "egg-umi-ssr-demo",
+  "name": "todos",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -77,8 +77,8 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:chen-kosile/todos.git"
   },
-  "author": "",
+  "author": "chenyuhan",
   "license": "MIT"
 }
