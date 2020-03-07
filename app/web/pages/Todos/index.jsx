@@ -14,6 +14,7 @@ function Todos(props) {
         })
     }, [dispatchAction]);
 
+    // 添加数据
     function onAddItem(value, setInput) {
         dispatchAction({
             type: 'todos/queryAddItem',
@@ -30,6 +31,7 @@ function Todos(props) {
         })
     }
 
+    // 修改多选状态
     function changeStatusAll(checked) {
         dispatchAction({
             type: 'todos/querySelectAll',
@@ -46,21 +48,8 @@ function Todos(props) {
             }
         })
     }
-
+    // 修改单挑数据状态
     function changeStatus(checked, index) {
-        // let list = selectList;
-        // list[index].checked = checked;
-        // let newList = list.filter(item => {
-        //     if (selectType === 'all') {
-        //         return true;
-        //     } else if ( selectType === 'active') {
-        //         return !item.checked;
-        //     } else if (selectType === 'completed') {
-        //         return item.checked;
-        //     }
-        //     return false;
-        // })
-
         dispatchAction({
             type: 'todos/queryChangeSelect',
             payload: {
@@ -76,6 +65,7 @@ function Todos(props) {
         })
     }
 
+    // 删除数据
     function removeItem(index) {
         dispatchAction({
             type: 'todos/queryRemoveItem',
@@ -91,6 +81,7 @@ function Todos(props) {
         })
     }
 
+    // 改变选择类型
     function onChangeType(type) {
         let selectList = dataList.filter(item => {
             if (type === 'all') {
@@ -111,6 +102,7 @@ function Todos(props) {
         });
     }
 
+    // 清除完成项
     function clearCompleted() {
         dispatchAction({
             type: 'todos/queryClearCompleted'
@@ -151,6 +143,7 @@ function Todos(props) {
     )
 }
 
+// 连接状态树
 export default connect(
     state => ({
         todos: state.todos

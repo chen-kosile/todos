@@ -1,12 +1,14 @@
 const { Service } = require('egg');
 
 class TodoService extends Service {
+    // 获取列表数据
     async getList() {
         const { ctx } = this;
         const list = await ctx.model.Todos.findAll();
         return list;
     }
 
+    // 添加数据
     async addItem(data) {
         const { ctx } = this;
         const { value, checked } = data;
@@ -19,6 +21,7 @@ class TodoService extends Service {
         return todos;
     }
 
+    // 全选，全不选
     async changeTodos(isSelected) {
         const { ctx, app } = this;
         const todos = await ctx.model.Todos.update({
@@ -34,6 +37,7 @@ class TodoService extends Service {
         return todos;
     }
 
+    // 单挑数据状态改变
     async changeSelect(obj) {
         const { id, checked } = obj;
         const { ctx } = this;
@@ -48,6 +52,7 @@ class TodoService extends Service {
         return result;
     }
 
+    // 清除完成数据
     async clearCompleted() {
         const { ctx } = this;
 
@@ -60,6 +65,7 @@ class TodoService extends Service {
         return ids;
     }
 
+    // 删除单条数据
     async removeItem(id) {
         const { ctx } = this;
 
