@@ -12,6 +12,7 @@
         - web 前端项目
 
     - config 配置文件
+        sequelize数据连接 等
     - database 数据库有关文件，通过sequelize数据库初始化；
 
 ## Install

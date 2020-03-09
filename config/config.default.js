@@ -21,17 +21,6 @@ module.exports = appInfo => {
     database: 'todos',
     password: '123456',
     underscored: true,
-    define: {
-      charset: "utf8",
-      dialectOptions: {
-        collate: "utf8_unicode_ci"
-      }
-    },
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    }
   };
 
   config.view = {
